@@ -74,18 +74,21 @@ square ( a, b ) model =
             if (Set.member ( a, b ) model.livingCells) then
                 "red"
             else
-                "blue"
+                "white"
     in
         Html.button
             [ Attributes.class "square"
             , Attributes.style
                 [ ( "backgroundColor", color )
                 , ( "width", (toString (100 / (toFloat model.width))) ++ "%" )
-                , ( "height", (toString (60 / (toFloat model.height))) ++ "%" )
+
+                {-
+                   , ( "height", (toString (60 / (toFloat model.height))) ++ "%" )
+                -}
                 ]
             , Events.onClick (ChangeCell ( a, b ))
             ]
-            [ Html.text (toString ( a, b )) ]
+            [{- Html.text (toString ( a, b )) -}]
 
 
 inputRow : Model -> Int -> Html.Html Msg
