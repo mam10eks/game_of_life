@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "elm-reactor": "./node_modules/elm/binwrappers/elm-reactor",
-    "elm-make": "./node_modules/elm/binwrappers/elm-make src/main.elm"
+    "start": "./node_modules/elm-format/bin/elm-format src/main.elm --yes && ./node_modules/elm/binwrappers/elm-make src/main.elm --output main.js"
   },
   "repository": {
     "type": "git",
@@ -15,6 +15,7 @@
   "author": "Maik Fröbe",
   "license": "ISC",
   "devDependencies": {
-    "elm": "^0.18.0"
+    "elm": "^0.18.0",
+    "elm-format": "^0.6.1-alpha"
   }
 }

@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Game of Life</title>
+		<style>
+			html,head,body
+			{
+				padding:0;
+				margin:0;
+			}
+
+			.square
+			{
+				background: #fff;
+				border: 1px solid #999;
+				float: left;
+				font-size: 24px;
+				font-weight: bold;
+				line-height: 68px;
+				height: 68px;
+				margin-right: -1px;
+				margin-top: -1px;
+				padding: 0;
+				text-align: center;
+				width: 68px;
+			}
+
+			.slider
+			{
+				width: 100% !important;
+			}
+		</style>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.9.0/css/bootstrap-slider.min.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.9.0/bootstrap-slider.min.js"></script>
+
+		<script src="../main.js"></script>
+	</head>
+	<body>
+		<div class="container-fluid text-center" style="background-color: #eee;">
+			<h1>Conway's Game of Life</h1>
+			<div id="wa"></div>
+			<div class="row">
+				<div class="col-sm-7">
+					<div style="background: white; border-radius: 25px; margin: 15px; padding: 15px;">
+						<h2>Backgound</h2>
+						The Game of Life, also known simply as Life,
+						is a cellular automaton devised by the British mathematician John Horton Conway in 1970.[1]
+			
+						The "game" is a zero-player game, meaning that its evolution is determined by its initial state,
+						requiring no further input. One interacts with the Game of Life by creating an initial
+						configuration and observing how it evolves, or, for advanced "players",
+						by creating patterns with particular properties.
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<div style="background: white; border-radius: 25px; margin: 15px; padding: 15px;">
+						<h2>Configuration</h2>
+						<br>
+						<div class="row">
+							<div class="col-md-2">Width:</div>
+							<div class="col-md-10">
+								<input id="width" data-slider-id='widthSlider' type="text" data-slider-min="4"
+									data-slider-max="20" data-slider-step="1" data-slider-value="4"
+									onchange="tmp.ports.changeWidth.send(parseInt(document.getElementById('width').value));"/>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-2">Height:</div>
+							<div class="col-md-10">
+								<input id="height" data-slider-id='heightSlider' type="text" data-slider-min="4"
+									data-slider-max="20" data-slider-step="1" data-slider-value="4"
+									onchange="tmp.ports.changeHeight.send(parseInt(document.getElementById('height').value));"/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container" style="margin: 25px">
+			<div id="main"/>
+		</div>
+		<script type="text/javascript">
+			new Slider('#width', {});
+			new Slider('#height', {});
+
+			var tmp = Elm.Main.embed(document.getElementById("main"));
+		</script>
+	</body>
+</html>
