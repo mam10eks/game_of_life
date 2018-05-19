@@ -13,4 +13,5 @@ echo "Make sure all dependencies are installed ..."
 npm install
 
 echo "Compile the source code ..."
-./node_modules/elm/binwrappers/elm-make src/main.elm --output build/index.html
+./node_modules/elm/binwrappers/elm-make src/main.elm --output build/main.js
+cp src/index.html build/

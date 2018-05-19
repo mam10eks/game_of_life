@@ -4,7 +4,8 @@ PORT=8080
 
 ./build_scripts/install.sh
 
-DOCKER_FILE="COPY index.html /usr/share/nginx/html/"
+DOCKER_FILE="COPY index.html /usr/share/nginx/html/\n"
+DOCKER_FILE="${DOCKER_FILE}COPY main.js /usr/share/nginx/html/\n"
 
 if [ -n "$(cat /proc/cpuinfo|grep ARMS)" ]; then
 	echo "Create docker file for arm cpu architecture"

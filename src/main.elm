@@ -47,10 +47,10 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         ChangeWidth newWidth ->
-            ( { model | width = clippedSize newWidth }, Cmd.none )
+            ( { model | width = clippedSize newWidth, livingCells = removeCellsOutsideOfGrid model model.livingCells }, Cmd.none )
 
         ChangeHeight newHeight ->
-            ( { model | height = clippedSize newHeight }, Cmd.none )
+            ( { model | height = clippedSize newHeight, livingCells = removeCellsOutsideOfGrid model model.livingCells }, Cmd.none )
 
         ChangeCell ( a, b ) ->
             ( { model | livingCells = toggleSetElement ( a, b ) model.livingCells |> removeCellsOutsideOfGrid model }, Cmd.none )
@@ -78,7 +78,11 @@ square ( a, b ) model =
     in
         Html.button
             [ Attributes.class "square"
-            , Attributes.style [ ( "backgroundColor", color ) ]
+            , Attributes.style
+                [ ( "backgroundColor", color )
+                , ( "width", (toString (100 / (toFloat model.width))) ++ "%" )
+                , ( "height", (toString (60 / (toFloat model.height))) ++ "%" )
+                ]
             , Events.onClick (ChangeCell ( a, b ))
             ]
             [ Html.text (toString ( a, b )) ]
