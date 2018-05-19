@@ -1,0 +1,20 @@
+{
+  "name": "game_of_life",
+  "version": "1.0.0",
+  "description": "An elm implementation of Conway's Game of Life",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "elm-reactor": "./node_modules/elm/binwrappers/elm-reactor",
+    "elm-make": "./node_modules/elm/binwrappers/elm-make src/main.elm"
+  },
+  "repository": {
+    "type": "git",
+    "url": "gitlab@gitlab.empty-stack.com:maik/game_of_life.git"
+  },
+  "author": "Maik Fröbe",
+  "license": "ISC",
+  "devDependencies": {
+    "elm": "^0.18.0"
+  }
+}
