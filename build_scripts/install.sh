@@ -9,11 +9,11 @@ echo "Clean build directory ..."
 rm -Rf build
 mkdir build
 
-echo "Make sure all dependencies are installed ..."
-npm install
-
 ./node_modules/elm-format/bin/elm-format src/main.elm --yes
 
 echo "Compile the source code ..."
-./node_modules/elm/binwrappers/elm-make src/main.elm --output build/main.js
+./node_modules/elm/binwrappers/elm-make src/main.elm --output src/generated/elm/main.js
 cp src/index.html build/
+cp -r src/generated build/
+
+npm run-script build

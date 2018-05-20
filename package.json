@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "elm-reactor": "./node_modules/elm/binwrappers/elm-reactor",
-    "start": "./node_modules/elm-format/bin/elm-format src/main.elm --yes && ./node_modules/elm/binwrappers/elm-make src/main.elm --output main.js"
+    "build": "babel src --presets env --out-dir build && browserify build/*.js > build/all.js && find build/*.js -not -name all.js -delete && rm -Rf build/generated",
+    "start": "./build_scripts/run_in_docker_container.sh"
   },
   "repository": {
     "type": "git",
@@ -15,7 +15,11 @@
   "author": "Maik Fröbe",
   "license": "ISC",
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "browserify": "^14.4.0",
     "elm": "^0.18.0",
-    "elm-format": "^0.6.1-alpha"
+    "elm-format": "^0.6.1-alpha",
+    "js-cookie": "^2.1.4"
   }
 }

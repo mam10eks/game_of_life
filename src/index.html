@@ -43,21 +43,7 @@
 				cursor: pointer;
 			}
 		</style>
-
-		<script>
-			function changeCollapseState() {
-				var toggleDescriptionButton = $("#toggleDescriptionButton");
-				toggleDescriptionButton.toggleClass("glyphicon-chevron-up").toggleClass("glyphicon-chevron-down");
-
-				if(toggleDescriptionButton[0].classList.contains("glyphicon-chevron-down")) {
-					window.alert("create cookie");
-				}
-				else {
-					window.alert("remove cookie");
-				}
-			}
-		</script>
-		
+	
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -66,7 +52,6 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.9.0/css/bootstrap-slider.min.css">
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.9.0/bootstrap-slider.min.js"></script>
 
-		<script src="main.js"></script>
 	</head>
 	<body>
 		<div class="container-fluid text-center" style="background-color: #eee;">
@@ -92,23 +77,21 @@
 							<div class="col-md-2">Width:</div>
 							<div class="col-md-10">
 								<input id="width" data-slider-id='widthSlider' type="text" data-slider-min="4"
-									data-slider-max="20" data-slider-step="1" data-slider-value="4"
-									onchange="tmp.ports.changeWidth.send(parseInt(document.getElementById('width').value));"/>
+									data-slider-max="20" data-slider-step="1" data-slider-value="4"/>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-2">Height:</div>
 							<div class="col-md-10">
 								<input id="height" data-slider-id='heightSlider' type="text" data-slider-min="4"
-									data-slider-max="20" data-slider-step="1" data-slider-value="4"
-									onchange="tmp.ports.changeHeight.send(parseInt(document.getElementById('height').value));"/>
+									data-slider-max="20" data-slider-step="1" data-slider-value="4"/>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 			<span class="glyphicon myButton glyphicon-chevron-up" id="toggleDescriptionButton" style="font-size: 1em;"
-				data-toggle="collapse" data-target="#description" onclick="changeCollapseState();"></span>
+				data-toggle="collapse" data-target="#description""></span>
 		</div>
 
 		<div style="width: 100%; display: table; background-color: green; border: 5px solid yellow;">
@@ -134,21 +117,6 @@
 			</div>
 		</div>
 
-		<script type="text/javascript">
-			new Slider('#width', {});
-			new Slider('#height', {});
-
-			var tmp = Elm.Main.embed(document.getElementById("main"));
-
-
-			if(typeof Cookies.get('hideDescription') === 'undefined') {
-				window.alert("aaaaaaa");
-				$("#description").collapse('show');
-			}
-			else {
-				window.alert("bbbbbbbbbb");
-				changeCollapseState();
-			}
-		</script>
+		<script src="all.js"></script>
 	</body>
 </html>
