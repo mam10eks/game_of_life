@@ -1,64 +1,50 @@
-import Cookie from 'js-cookie'
 import Elm from './generated/elm/main.js'
-import JQuery from 'jquery'
-window.$ = window.jQuery = JQuery;
+import {ConfigurationView, CONFIG_WIDTH_DIMENSION_NAME, CONFIG_HEIGHT_DIMENSION_NAME} from './configuration-view.js'
+import {CookieStorage} from './cookie-storage.js'
+import DetailsView from './details-view.js'
+import Introduction from './introduction.js'
 
-require('bootstrap')
-const Slider = require('bootstrap-slider')
+import 'bootstrap/dist/css/bootstrap.min.css'
+import '../css/style.css'
 
-const HIDE_DESCRIPTION_COOKIE_NAME = 'hideDescription';
-const WIDTH_DIMENSION_COOKIE_NAME = 'width';
-const HEIGHT_DIMENSION_COOKIE_NAME = 'height';
+let cookieStorage = new CookieStorage();
 
-const elmDimensionPorts = {
-	'width': i => elmMainModule.ports.changeWidth.send(i),
-	'height': i => elmMainModule.ports.changeHeight.send(i)
+let detailsView = new DetailsView(
+	() => cookieStorage.hideDetails(), 
+	() => cookieStorage.showDetails()
+);
+
+let introduction = new Introduction(detailsView);
+
+let configurationView = new ConfigurationView(onChangeDimension, {
+	width: cookieStorage.getWidth(),
+	height: cookieStorage.getHeight()
+});
+
+function onChangeDimension () {
+	elmMainModule.ports.changeWidth.send(configurationView.getWidth());
+	elmMainModule.ports.changeHeight.send(configurationView.getHeight());
+
+	cookieStorage.setWidth(configurationView.getWidth());
+	cookieStorage.setHeight(configurationView.getHeight());
 }
 
-function changeCollapseState() {
-	let toggleDescriptionButton = $("#toggleDescriptionButton");
-	toggleDescriptionButton.toggleClass("glyphicon-chevron-up").toggleClass("glyphicon-chevron-down");
-
-	if(toggleDescriptionButton[0].classList.contains("glyphicon-chevron-down")) {
-		Cookie.set(HIDE_DESCRIPTION_COOKIE_NAME, 1);
-	}
-	else {
-		Cookie.remove(HIDE_DESCRIPTION_COOKIE_NAME);
-	}
-}
-
-function onChangeDimension (dimensionName) {
-	let dimensionSize = parseInt(document.getElementById(dimensionName).value);
-
-	Cookie.set(dimensionName, dimensionSize);
-	elmDimensionPorts[dimensionName](dimensionSize);
-}
-
-function getDimensionValueFromCookie(dimensionName) {
-	let dimensionSize = Cookie.get(dimensionName);
-
-	return (typeof dimensionSize === 'undefined') ? 4 : dimensionSize;
-}
-
-let widthSlider = new Slider('#'+ WIDTH_DIMENSION_COOKIE_NAME, {});
-let heightSlider = new Slider('#'+ HEIGHT_DIMENSION_COOKIE_NAME, {});
-
-document.getElementById(HEIGHT_DIMENSION_COOKIE_NAME).onchange = () => onChangeDimension(HEIGHT_DIMENSION_COOKIE_NAME);
-document.getElementById(WIDTH_DIMENSION_COOKIE_NAME).onchange = () => onChangeDimension(WIDTH_DIMENSION_COOKIE_NAME);
-document.getElementById("toggleDescriptionButton").onclick = changeCollapseState
-
-if(typeof Cookie.get(HIDE_DESCRIPTION_COOKIE_NAME) === 'undefined') {
-	$("#description").collapse('show');
+if(cookieStorage.areDetailsHidden()) {
+	detailsView.hideDetails();
 }
 else {
-	changeCollapseState();
+	detailsView.showDetails();
 }
 
-widthSlider.setValue(getDimensionValueFromCookie(WIDTH_DIMENSION_COOKIE_NAME));
-heightSlider.setValue(getDimensionValueFromCookie(HEIGHT_DIMENSION_COOKIE_NAME));
-
 let elmMainModule = Elm.Main.embed(document.getElementById("main"),
-	{width: widthSlider.getValue(), height: heightSlider.getValue()});
+	{width: configurationView.getWidth(), height: configurationView.getHeight()});
 
 document.getElementById("loadingContainer").style.display = "none";
 document.getElementById("contentContainer").style.display = "inline";
+
+document.getElementById("tutorial").onclick = introduction.showTutorial;
+
+if(cookieStorage.userShouldStartTutorial()) {
+	cookieStorage.setUserHasSeenTutorial();
+	introduction.showTutorial();
+}

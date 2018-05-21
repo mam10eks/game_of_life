@@ -1,10 +1,24 @@
-@import url("../node_modules/bootstrap/dist/css/bootstrap.min.css");
-
 html, head, body
 {
 	padding:0;
 	margin:0;
+	font-size: 1em;
 }
+
+
+.introjs-tooltip
+{
+	min-width: 300px;
+	max-width: 500px;
+	font-size: 1.6em;
+}
+
+
+.introjs-button
+{
+	font-size: 1.5em;
+}
+
 
 .cell
 {
@@ -16,7 +30,7 @@ html, head, body
 	margin-right: -1px;
 	margin-top: -1px;
 	padding: 0;
-	height: 15px;
+	height: 100%;
 	text-align: center;
 }
 
@@ -31,7 +45,7 @@ html, head, body
 	margin-top: -1px;
 	padding: 0;
 	opacity: 0.3;
-	height: 15px;
+	height: 100%;
 	text-align: center;
 }
 
@@ -45,7 +59,7 @@ html, head, body
 	margin-right: -1px;
 	margin-top: -1px;
 	padding: 0;
-	height: 15px;
+	height: 100%;
 	text-align: center;
 }
 
@@ -59,7 +73,7 @@ html, head, body
 	margin-right: -1px;
 	margin-top: -1px;
 	padding: 0;
-	height: 15px;
+	height: 100%;
 	opacity: 0.3;
 	text-align: center;
 }
@@ -101,5 +115,20 @@ html, head, body
 	width: 75px;
 	background-color: #eee;
 	vertical-align: middle;
-	margin 0 auto;
+	margin: 0 auto;
+}
+
+h1
+{
+	font-size: 3em;
+}
+
+h2
+{
+	font-size: 2em;
+}
+
+.btn
+{
+	font-size: 2em;
 }

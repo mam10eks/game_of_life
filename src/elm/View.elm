@@ -34,7 +34,11 @@ square ( a, b ) model =
 
 inputRow : Model -> Int -> Html.Html Msg
 inputRow model rowIndex =
-    Html.div [ Attributes.class "row" ] (List.map (\i -> square ( rowIndex, i ) model) (List.range 0 (model.width - 1)))
+    Html.div
+        [ Attributes.class "row"
+        , Attributes.style [ ( "height", (toString (72 / (toFloat model.height))) ++ "vh" ) ]
+        ]
+        (List.map (\i -> square ( rowIndex, i ) model) (List.range 0 (model.width - 1)))
 
 
 historyNavigationButton : Bool -> String -> Msg -> Html.Html Msg
@@ -73,6 +77,13 @@ buttonBar canRun =
         ]
 
 
+buttonBarId iconName =
+    if "play" == iconName then
+        "runButton"
+    else
+        "cleanButton"
+
+
 buttonBarButton : ( String, String ) -> Bool -> Msg -> List (Html.Html Msg)
 buttonBarButton ( iconName, text ) canRun msg =
     let
@@ -84,7 +95,8 @@ buttonBarButton ( iconName, text ) canRun msg =
     in
         [ Html.div [ Attributes.class "col-xs-2" ] []
         , Html.button
-            ([ Attributes.type_ "button"
+            ([ Attributes.id (buttonBarId iconName)
+             , Attributes.type_ "button"
              , Attributes.classList [ ( "col-xs-3", True ), ( "btn", True ), ( "btn-lg", True ), ( "btn-default", True ), ( "disabled", not canRun ) ]
              ]
                 ++ clickEvent

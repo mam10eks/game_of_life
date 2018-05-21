@@ -17,6 +17,5 @@ rm -Rf src/js/generated
 
 cp src/index.html build/
 cp -r src/js/generated build/
-cp src/css/style.css build/style.css
 
-npm run-script build
+npm run-script webp

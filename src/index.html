@@ -4,9 +4,6 @@
 		<meta charset="UTF-8">
 		<title>Game of Life</title>
 
-		<link rel="stylesheet" href="style.css">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.9.0/css/bootstrap-slider.min.css">
 		<style>
 			.spinner
 			{
@@ -67,17 +64,21 @@
 						<div style="background: white; border-radius: 25px; margin: 15px; padding: 15px;">
 							<h2>Backgound</h2>
 							The Game of Life, also known simply as Life,
-							is a cellular automaton devised by the British mathematician John Horton Conway in 1970.[1]
+							is a cellular automaton devised by the British mathematician John Horton Conway in 1970 [1].
 			
-							The "game" is a zero-player game, meaning that its evolution is determined by its initial state,
-							requiring no further input. One interacts with the Game of Life by creating an initial
-							configuration and observing how it evolves, or, for advanced "players",
-							by creating patterns with particular properties.
-							<a data-toggle="modal" data-target="#exampleModalLong">Launch demo modal</a>
+							You could start using this
+							<p>
+								<a id="tutorial">Tutorial</a>
+							</p>
+
+							Source code and other informations could be found in the 
+							<p>
+								<a data-toggle="modal" data-target="#exampleModalLong">About Section</a>
+							</p>
 						</div>
 					</div>
 					<div class="col-sm-5">
-						<div style="background: white; border-radius: 25px; margin: 15px; padding: 15px;">
+						<div id="configuration" style="background: white; border-radius: 25px; margin: 15px; padding: 15px;">
 							<h2>Configuration</h2>
 							<br>
 							<div class="row">
@@ -98,7 +99,7 @@
 					</div>
 				</div>
 				<span class="glyphicon myButton glyphicon-chevron-up" id="toggleDescriptionButton" style="font-size: 1em;"
-					data-toggle="collapse" data-target="#description"></span>
+					data-target="#description"></span>
 			</div>
 
 			<div id="main"></div>
