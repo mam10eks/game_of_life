@@ -6,6 +6,7 @@ PORT=8080
 
 DOCKER_FILE="COPY index.html /usr/share/nginx/html/\n"
 DOCKER_FILE="${DOCKER_FILE}COPY all.js /usr/share/nginx/html/\n"
+DOCKER_FILE="${DOCKER_FILE}COPY *.css* /usr/share/nginx/html/\n"
 
 if [ -n "$(cat /proc/cpuinfo|grep ARMS)" ]; then
 	echo "Create docker file for arm cpu architecture"

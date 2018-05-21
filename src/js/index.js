@@ -1,5 +1,10 @@
 import Cookie from 'js-cookie'
 import Elm from './generated/elm/main.js'
+import JQuery from 'jquery'
+window.$ = window.jQuery = JQuery;
+
+require('bootstrap')
+const Slider = require('bootstrap-slider')
 
 const HIDE_DESCRIPTION_COOKIE_NAME = 'hideDescription';
 

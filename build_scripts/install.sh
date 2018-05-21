@@ -9,11 +9,14 @@ echo "Clean build directory ..."
 rm -Rf build
 mkdir build
 
-./node_modules/elm-format/bin/elm-format src/main.elm --yes
+./node_modules/elm-format/bin/elm-format src/elm/*.elm --yes
 
 echo "Compile the source code ..."
-./node_modules/elm/binwrappers/elm-make src/main.elm --output src/generated/elm/main.js
+rm -Rf src/js/generated
+./node_modules/elm/binwrappers/elm-make src/elm/Main.elm --output src/js/generated/elm/main.js
+
 cp src/index.html build/
-cp -r src/generated build/
+cp -r src/js/generated build/
+cp src/css/style.css build/style.css
 
 npm run-script build

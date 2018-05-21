@@ -4,9 +4,11 @@
   "description": "An elm implementation of Conway's Game of Life",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel src --presets env --out-dir build && browserify build/*.js > build/all.js && find build/*.js -not -name all.js -delete && rm -Rf build/generated",
-    "start": "./build_scripts/run_in_docker_container.sh"
+    "test": "elm test",
+	"prebuild": "npm test",
+    "build": "babel src/js --presets env --out-dir build && browserify build/*.js > build/all.js && find build/*.js -not -name all.js -delete && rm -Rf build/generated",
+    "start": "./build_scripts/run_in_docker_container.sh",
+    "br": "browserify-css src/style.css"
   },
   "repository": {
     "type": "git",
@@ -20,6 +22,12 @@
     "browserify": "^14.4.0",
     "elm": "^0.18.0",
     "elm-format": "^0.6.1-alpha",
+    "elm-test": "^0.18.9"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "bootstrap-slider": "^9.9.0",
+    "jquery": "^3.2.1",
     "js-cookie": "^2.1.4"
   }
 }

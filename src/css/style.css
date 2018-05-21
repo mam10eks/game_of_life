@@ -1,0 +1,105 @@
+@import url("../node_modules/bootstrap/dist/css/bootstrap.min.css");
+
+html, head, body
+{
+	padding:0;
+	margin:0;
+}
+
+.cell
+{
+	background: #fff;
+	border: 1px solid #999;
+	float: left;
+	font-size: 24px;
+	font-weight: bold;
+	margin-right: -1px;
+	margin-top: -1px;
+	padding: 0;
+	height: 15px;
+	text-align: center;
+}
+
+.cellInFocus
+{
+	background: white;
+	border: 1px solid #999;
+	float: left;
+	font-size: 24px;
+	font-weight: bold;
+	margin-right: -1px;
+	margin-top: -1px;
+	padding: 0;
+	opacity: 0.3;
+	height: 15px;
+	text-align: center;
+}
+
+.livingCell
+{
+	background: red;
+	border: 1px solid #999;
+	float: left;
+	font-size: 24px;
+	font-weight: bold;
+	margin-right: -1px;
+	margin-top: -1px;
+	padding: 0;
+	height: 15px;
+	text-align: center;
+}
+
+.livingCellInFocus
+{
+	background: red;
+	border: 1px solid #999;
+	float: left;
+	font-size: 24px;
+	font-weight: bold;
+	margin-right: -1px;
+	margin-top: -1px;
+	padding: 0;
+	height: 15px;
+	opacity: 0.3;
+	text-align: center;
+}
+
+.cellInFocus:hover, .livingCellInFocus:hover
+{
+	border: 3px solid #000 !important;
+}
+
+.slider
+{
+	width: 100% !important;
+}
+
+.myButton
+{
+	width: 75px;
+	height: 100%;
+	font-size: 4em;
+	opacity: .7;
+}
+
+.myButton:hover
+{
+	opacity: 1;
+	cursor: pointer;
+}
+
+.mainRow
+{
+	width: 100%;
+	display: table;
+	background-color: #eee;
+}
+
+.mainRowGlyphiconWrapper
+{
+	display: table-cell;
+	width: 75px;
+	background-color: #eee;
+	vertical-align: middle;
+	margin 0 auto;
+}
