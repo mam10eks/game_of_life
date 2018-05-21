@@ -19,3 +19,4 @@ type Msg
     | HoverCell ( Int, Int )
     | CalculateNextGeneration
     | GoToLastState
+    | Clear

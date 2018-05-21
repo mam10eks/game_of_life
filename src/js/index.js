@@ -7,6 +7,13 @@ require('bootstrap')
 const Slider = require('bootstrap-slider')
 
 const HIDE_DESCRIPTION_COOKIE_NAME = 'hideDescription';
+const WIDTH_DIMENSION_COOKIE_NAME = 'width';
+const HEIGHT_DIMENSION_COOKIE_NAME = 'height';
+
+const elmDimensionPorts = {
+	'width': i => elmMainModule.ports.changeWidth.send(i),
+	'height': i => elmMainModule.ports.changeHeight.send(i)
+}
 
 function changeCollapseState() {
 	let toggleDescriptionButton = $("#toggleDescriptionButton");
@@ -20,17 +27,25 @@ function changeCollapseState() {
 	}
 }
 
+function onChangeDimension (dimensionName) {
+	let dimensionSize = parseInt(document.getElementById(dimensionName).value);
 
-new Slider('#width', {});
-new Slider('#height', {});
+	Cookie.set(dimensionName, dimensionSize);
+	elmDimensionPorts[dimensionName](dimensionSize);
+}
 
-let elmMainModule = Elm.Main.embed(document.getElementById("main"));
+function getDimensionValueFromCookie(dimensionName) {
+	let dimensionSize = Cookie.get(dimensionName);
 
-document.getElementById("height").onchange = () => elmMainModule.ports.changeHeight.send(parseInt(document.getElementById('height').value));
-document.getElementById("width").onchange = () => elmMainModule.ports.changeWidth.send(parseInt(document.getElementById('width').value));
+	return (typeof dimensionSize === 'undefined') ? 4 : dimensionSize;
+}
+
+let widthSlider = new Slider('#'+ WIDTH_DIMENSION_COOKIE_NAME, {});
+let heightSlider = new Slider('#'+ HEIGHT_DIMENSION_COOKIE_NAME, {});
+
+document.getElementById(HEIGHT_DIMENSION_COOKIE_NAME).onchange = () => onChangeDimension(HEIGHT_DIMENSION_COOKIE_NAME);
+document.getElementById(WIDTH_DIMENSION_COOKIE_NAME).onchange = () => onChangeDimension(WIDTH_DIMENSION_COOKIE_NAME);
 document.getElementById("toggleDescriptionButton").onclick = changeCollapseState
-
-
 
 if(typeof Cookie.get(HIDE_DESCRIPTION_COOKIE_NAME) === 'undefined') {
 	$("#description").collapse('show');
@@ -38,3 +53,9 @@ if(typeof Cookie.get(HIDE_DESCRIPTION_COOKIE_NAME) === 'undefined') {
 else {
 	changeCollapseState();
 }
+
+widthSlider.setValue(getDimensionValueFromCookie(WIDTH_DIMENSION_COOKIE_NAME));
+heightSlider.setValue(getDimensionValueFromCookie(HEIGHT_DIMENSION_COOKIE_NAME));
+
+let elmMainModule = Elm.Main.embed(document.getElementById("main"),
+	{width: widthSlider.getValue(), height: heightSlider.getValue()});

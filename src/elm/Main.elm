@@ -10,11 +10,23 @@ import Result as Result
 
 
 main =
-    Html.program { init = ( model, Cmd.none ), view = View.view, update = update, subscriptions = JavascriptPorts.subscriptions }
+    Html.programWithFlags { init = init, view = View.view, update = update, subscriptions = JavascriptPorts.subscriptions }
 
 
-model =
-    { width = 4, height = 4, livingCells = Set.empty, hoveredCell = ( -1, -1 ), history = [] }
+type alias Flags =
+    { width : Int, height : Int }
+
+
+init : Flags -> ( Model.Model, Cmd Msg )
+init flags =
+    ( { width = clippedSize flags.width
+      , height = clippedSize flags.height
+      , livingCells = Set.empty
+      , hoveredCell = ( -1, -1 )
+      , history = []
+      }
+    , Cmd.none
+    )
 
 
 clippedSize : Int -> Int
@@ -60,3 +72,6 @@ update msg model =
               }
             , Cmd.none
             )
+
+        Clear ->
+            ( { model | livingCells = Set.empty, history = [] }, Cmd.none )
