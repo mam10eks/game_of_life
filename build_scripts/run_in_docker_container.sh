@@ -3,12 +3,14 @@
 PORT=8080
 
 ./build_scripts/install.sh
+cp build_scripts/default.conf build
 
 DOCKER_FILE="COPY index.html /usr/share/nginx/html/\n"
 DOCKER_FILE="${DOCKER_FILE}COPY all.js /usr/share/nginx/html/\n"
 DOCKER_FILE="${DOCKER_FILE}COPY *.css* /usr/share/nginx/html/\n"
+DOCKER_FILE="${DOCKER_FILE}COPY default.conf /etc/nginx/conf.d/default.conf\n"
 
-if [ -n "$(cat /proc/cpuinfo|grep ARMS)" ]; then
+if [ -n "$(cat /proc/cpuinfo|grep ARM)" ]; then
 	echo "Create docker file for arm cpu architecture"
 	DOCKER_FILE="FROM tobi312/rpi-nginx:alpine\n${DOCKER_FILE}"
 else

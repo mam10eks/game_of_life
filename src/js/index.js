@@ -59,3 +59,6 @@ heightSlider.setValue(getDimensionValueFromCookie(HEIGHT_DIMENSION_COOKIE_NAME))
 
 let elmMainModule = Elm.Main.embed(document.getElementById("main"),
 	{width: widthSlider.getValue(), height: heightSlider.getValue()});
+
+document.getElementById("loadingContainer").style.display = "none";
+document.getElementById("contentContainer").style.display = "inline";

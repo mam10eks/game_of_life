@@ -21,7 +21,7 @@ mapCellWithBreak ( a, b ) model =
 
 adjacentCells : ( Int, Int ) -> Model.Model -> Set.Set ( Int, Int )
 adjacentCells ( a, b ) model =
-    if (a < 0 || b < 0 || a >= model.height || b >= model.height) then
+    if (a < 0 || b < 0 || a >= model.height || b >= model.width) then
         Set.empty
     else
         Set.map (\x -> mapCellWithBreak x model)

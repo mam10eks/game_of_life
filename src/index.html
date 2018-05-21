@@ -7,66 +7,119 @@
 		<link rel="stylesheet" href="style.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.9.0/css/bootstrap-slider.min.css">
+		<style>
+			.spinner
+			{
+				width: 40px;
+				height: 40px;
+				
+				position: relative;
+				margin: 100px auto;
+			}
+
+			.double-bounce1, .double-bounce2
+			{
+				width: 100%;
+				height: 100%;
+				border-radius: 50%;
+				background-color: #333;
+				opacity: 0.6;
+				position: absolute;
+				top: 0;
+				left: 0;
+								  
+				-webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+				animation: sk-bounce 2.0s infinite ease-in-out;
+			}
+
+			.double-bounce2
+			{
+				-webkit-animation-delay: -1.0s;
+				animation-delay: -1.0s;
+			}
+
+			@-webkit-keyframes sk-bounce
+			{
+				0%, 100% { -webkit-transform: scale(0.0) }
+				50% { -webkit-transform: scale(1.0) }
+			}
+
+			@keyframes sk-bounce
+			{
+			    0%, 100% { transform: scale(0.0); -webkit-transform: scale(0.0); }
+				50% { transform: scale(1.0); -webkit-transform: scale(1.0); }
+			}
+		</style>
 	</head>
 	<body>
-		<div class="container-fluid text-center" style="background-color: #eee;">
-			<h1>Conway's Game of Life</h1>
-			<div class="row collapse" id="description">
-				<div class="col-sm-7">
-					<div style="background: white; border-radius: 25px; margin: 15px; padding: 15px;">
-						<h2>Backgound</h2>
-						The Game of Life, also known simply as Life,
-						is a cellular automaton devised by the British mathematician John Horton Conway in 1970.[1]
-			
-						The "game" is a zero-player game, meaning that its evolution is determined by its initial state,
-						requiring no further input. One interacts with the Game of Life by creating an initial
-						configuration and observing how it evolves, or, for advanced "players",
-						by creating patterns with particular properties.
-						<a data-toggle="modal" data-target="#exampleModalLong">Launch demo modal</a>
-					</div>
-				</div>
-				<div class="col-sm-5">
-					<div style="background: white; border-radius: 25px; margin: 15px; padding: 15px;">
-						<h2>Configuration</h2>
-						<br>
-						<div class="row">
-							<div class="col-md-2">Width:</div>
-							<div class="col-md-10">
-								<input id="width" data-slider-id='widthSlider' type="text" data-slider-min="4"
-									data-slider-max="20" data-slider-step="1" data-slider-value="4"/>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-2">Height:</div>
-							<div class="col-md-10">
-								<input id="height" data-slider-id='heightSlider' type="text" data-slider-min="4"
-									data-slider-max="20" data-slider-step="1" data-slider-value="4"/>
-							</div>
-						</div>
-					</div>
-				</div>
+		<div id="loadingContainer">
+			<div class="spinner">
+				<div class="double-bounce1"></div>
+				<div class="double-bounce2"></div>
 			</div>
-			<span class="glyphicon myButton glyphicon-chevron-up" id="toggleDescriptionButton" style="font-size: 1em;"
-				data-toggle="collapse" data-target="#description""></span>
 		</div>
 
-		<div id="main"></div>
-
-		<script src="all.js"></script>
-
-		<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
+		<div id="contentContainer" style="display: none">
+			<div class="container-fluid text-center" style="background-color: #eee;">
+				<h1>Conway's Game of Life</h1>
+				<div class="row collapse" id="description">
+					<div class="col-sm-7">
+						<div style="background: white; border-radius: 25px; margin: 15px; padding: 15px;">
+							<h2>Backgound</h2>
+							The Game of Life, also known simply as Life,
+							is a cellular automaton devised by the British mathematician John Horton Conway in 1970.[1]
+			
+							The "game" is a zero-player game, meaning that its evolution is determined by its initial state,
+							requiring no further input. One interacts with the Game of Life by creating an initial
+							configuration and observing how it evolves, or, for advanced "players",
+							by creating patterns with particular properties.
+							<a data-toggle="modal" data-target="#exampleModalLong">Launch demo modal</a>
+						</div>
 					</div>
-					<div class="modal-body">...</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Save changes</button>
+					<div class="col-sm-5">
+						<div style="background: white; border-radius: 25px; margin: 15px; padding: 15px;">
+							<h2>Configuration</h2>
+							<br>
+							<div class="row">
+								<div class="col-md-2">Width:</div>
+								<div class="col-md-10">
+									<input id="width" data-slider-id='widthSlider' type="text" data-slider-min="4"
+										data-slider-max="20" data-slider-step="1" data-slider-value="4"/>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-2">Height:</div>
+								<div class="col-md-10">
+									<input id="height" data-slider-id='heightSlider' type="text" data-slider-min="4"
+										data-slider-max="20" data-slider-step="1" data-slider-value="4"/>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<span class="glyphicon myButton glyphicon-chevron-up" id="toggleDescriptionButton" style="font-size: 1em;"
+					data-toggle="collapse" data-target="#description"></span>
+			</div>
+
+			<div id="main"></div>
+
+			<script src="all.js"></script>
+
+			<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"
+				aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">...</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							<button type="button" class="btn btn-primary">Save changes</button>
+						</div>
 					</div>
 				</div>
 			</div>
