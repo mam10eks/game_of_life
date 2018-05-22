@@ -43,6 +43,8 @@ document.getElementById("contentContainer").style.display = "inline";
 document.getElementById("tutorial").onclick = () => new Introduction(detailsView, configurationView, elmMainModule).showTutorial();
 
 if(cookieStorage.userShouldStartTutorial()) {
-	cookieStorage.setUserHasSeenTutorial();
-	new Introduction(detailsView, configurationView, elmMainModule).showTutorial();
+	setTimeout(() => {
+		cookieStorage.setUserHasSeenTutorial();
+		new Introduction(detailsView, configurationView, elmMainModule).showTutorial();
+	}, 1);
 }

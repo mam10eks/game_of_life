@@ -2,11 +2,11 @@ import introJs from 'intro.js'
 import 'intro.js/introjs.css'
 
 const steps = [ {
-        intro: "Welcome&nbsp;to&nbsp;<b>Conway's&nbsp;Game&nbsp;of&nbsp;Life</b>.<br><br><div style='font-size: 0.8em;'>Where <b>evolution</b> becomes a <b>turn-based</b> game :)<img src='https://i.ytimg.com/vi/d2AgV_6HkDI/maxresdefault.jpg' width='100%'></div>"
+        intro: "Welcome&nbsp;to&nbsp;<b>Conway's&nbsp;Game&nbsp;of&nbsp;Life</b>.<br><br><div style='font-size: 0.8em;'>Where&nbsp;<b>evolution</b>&nbsp;becomes&nbsp;a&nbsp;<b>turn&#8209;based</b>&nbsp;game&nbsp;:)<img src='https://i.ytimg.com/vi/d2AgV_6HkDI/maxresdefault.jpg' width='100%'></div>"
     }, {
         element: "#tutorial",
         position: "right",
-        intro: "You could always repeat this introduction." 
+        intro: "You could always repeat this introduction."
     }, {
         element: "#configuration",
         intro: "Or change your preferences"
@@ -22,6 +22,7 @@ const steps = [ {
         intro: "A white cell is dead"
     }, {
         element: "#history_right",
+        position: "left",
         intro: "Alright!<br><br><div style='font-size: 0.8em;'>Lets investigate the next <b>round</b> of <b>evolution</b>.</div>"
     }, {
         element: "#cell_2_2",
@@ -75,6 +76,7 @@ export default class Introduction {
         this.setCellClass(2, 2, "cell");
         this.setCellClass(3, 1, "cell");
         this.setCellClass(2, 3, "cell");
+        document.querySelector("#history_right").classList.remove("glyphicon-chevron-right", "myButton")
     }
 
     firstTutorialBoardExample() {
@@ -82,6 +84,7 @@ export default class Introduction {
         this.setCellClass(2, 2, "cell");
         this.setCellClass(3, 1, "livingCell");
         this.setCellClass(2, 3, "livingCell");
+        document.querySelector("#history_right").classList.add("glyphicon-chevron-right", "myButton")
     }
 
     finalTutorialBoard() {
@@ -89,6 +92,7 @@ export default class Introduction {
         this.setCellClass(2, 2, "livingCell");
         this.setCellClass(3, 1, "cell");
         this.setCellClass(2, 3, "cell");
+        document.querySelector("#history_right").classList.remove("glyphicon-chevron-right", "myButton")
     }
     
     setCellClass(x, y, clazz) {
