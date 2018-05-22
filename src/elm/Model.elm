@@ -1,6 +1,7 @@
 module Model exposing (..)
 
 import Set as Set
+import List
 
 
 type alias Model =
@@ -9,6 +10,7 @@ type alias Model =
     , livingCells : Set.Set ( Int, Int )
     , hoveredCell : ( Int, Int )
     , history : List (Set.Set ( Int, Int ))
+    , presentationMode : Bool
     }
 
 
@@ -20,3 +22,4 @@ type Msg
     | CalculateNextGeneration
     | GoToLastState
     | Clear
+    | EnablePresentationMode Bool

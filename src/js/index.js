@@ -14,12 +14,13 @@ let detailsView = new DetailsView(
 	() => cookieStorage.showDetails()
 );
 
-let introduction = new Introduction(detailsView);
-
 let configurationView = new ConfigurationView(onChangeDimension, {
 	width: cookieStorage.getWidth(),
 	height: cookieStorage.getHeight()
 });
+
+let elmMainModule = Elm.Main.embed(document.getElementById("main"),
+	{width: configurationView.getWidth(), height: configurationView.getHeight()});
 
 function onChangeDimension () {
 	elmMainModule.ports.changeWidth.send(configurationView.getWidth());
@@ -36,15 +37,12 @@ else {
 	detailsView.showDetails();
 }
 
-let elmMainModule = Elm.Main.embed(document.getElementById("main"),
-	{width: configurationView.getWidth(), height: configurationView.getHeight()});
-
 document.getElementById("loadingContainer").style.display = "none";
 document.getElementById("contentContainer").style.display = "inline";
 
-document.getElementById("tutorial").onclick = introduction.showTutorial;
+document.getElementById("tutorial").onclick = () => new Introduction(detailsView, configurationView, elmMainModule).showTutorial();
 
 if(cookieStorage.userShouldStartTutorial()) {
 	cookieStorage.setUserHasSeenTutorial();
-	introduction.showTutorial();
+	new Introduction(detailsView, configurationView, elmMainModule).showTutorial();
 }

@@ -17,9 +17,10 @@ class ConfigurationView {
 
         document.getElementById(CONFIG_HEIGHT_DIMENSION_NAME).onchange = onDimensionChanged;
         document.getElementById(CONFIG_WIDTH_DIMENSION_NAME).onchange = onDimensionChanged;
+        this.onDimensionChanged = onDimensionChanged;
 
-        this.setWidth(conf.width);
-        this.setHeight(conf.height);
+        this.widthSlider.setValue(conf.width)
+        this.heightSlider.setValue(conf.height)
     }
 
     getWidth() {
@@ -28,6 +29,7 @@ class ConfigurationView {
 
     setWidth(width) {
         this.widthSlider.setValue(clipDimensionSize(width));
+        this.onDimensionChanged();
     }
 
     getHeight() {
@@ -36,6 +38,7 @@ class ConfigurationView {
 
     setHeight(height) {
         this.heightSlider.setValue(clipDimensionSize(height));
+        this.onDimensionChanged();
     }
 }
 

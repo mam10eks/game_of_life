@@ -22,13 +22,20 @@ square ( a, b ) model =
                 "InFocus"
             else
                 ""
+
+        interactionEvents =
+            if not model.presentationMode then
+                [ Events.onMouseEnter (HoverCell ( a, b )), Events.onClick (ChangeCell ( a, b )) ]
+            else
+                []
     in
         Html.button
-            [ Attributes.class (class ++ classSuffix)
-            , Events.onMouseEnter (HoverCell ( a, b ))
-            , Attributes.style [ ( "width", (toString (100 / (toFloat model.width))) ++ "%" ) ]
-            , Events.onClick (ChangeCell ( a, b ))
-            ]
+            ([ Attributes.class (class ++ classSuffix)
+             , Attributes.id ("cell_" ++ (toString a) ++ "_" ++ (toString b))
+             , Attributes.style [ ( "width", (toString (100 / (toFloat model.width))) ++ "%" ) ]
+             ]
+                ++ interactionEvents
+            )
             []
 
 
@@ -60,6 +67,7 @@ historyNavigationButton active direction msg =
                         , ( "myButton", active )
                         ]
                    )
+                 , Attributes.id ("history_" ++ direction)
                  ]
                     ++ spanAttributes
                 )

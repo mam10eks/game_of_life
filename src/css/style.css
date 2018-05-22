@@ -9,7 +9,7 @@ html, head, body
 .introjs-tooltip
 {
 	min-width: 300px;
-	max-width: 500px;
+	max-width: 750px;
 	font-size: 1.6em;
 }
 
@@ -131,4 +131,9 @@ h2
 .btn
 {
 	font-size: 2em;
+}
+
+a
+{
+	cursor: pointer;
 }

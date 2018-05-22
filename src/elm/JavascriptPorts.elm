@@ -9,6 +9,9 @@ port changeWidth : (Int -> msg) -> Sub msg
 port changeHeight : (Int -> msg) -> Sub msg
 
 
+port enablePresentationMode : (Bool -> msg) -> Sub msg
+
+
 subscriptions : Model -> Sub Msg
 subscriptions model =
-    Sub.batch [ changeWidth ChangeWidth, changeHeight ChangeHeight ]
+    Sub.batch [ changeWidth ChangeWidth, changeHeight ChangeHeight, enablePresentationMode EnablePresentationMode ]

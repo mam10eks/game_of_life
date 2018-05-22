@@ -24,6 +24,7 @@ init flags =
       , livingCells = Set.empty
       , hoveredCell = ( -1, -1 )
       , history = []
+      , presentationMode = False
       }
     , Cmd.none
     )
@@ -75,3 +76,6 @@ update msg model =
 
         Clear ->
             ( { model | livingCells = Set.empty, history = [] }, Cmd.none )
+
+        EnablePresentationMode enablePresentationMode ->
+            ( { model | livingCells = Set.empty, history = [], presentationMode = enablePresentationMode }, Cmd.none )

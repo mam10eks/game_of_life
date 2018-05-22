@@ -8,7 +8,7 @@ const MAXIMUM_DIMENSION = 20;
 
 const HIDE_DESCRIPTION_COOKIE_NAME = 'hideDescription';
 
-const USER_HAS_SEEN_TUTORIAL = "userHasSeenTutorial";
+const USER_HAS_SEEN_TUTORIAL = 'userHasSeenTutorial';
 
 function getDimensionValueFromCookie(dimensionName) {
 	return clipDimensionSize(parseInt(Cookie.get(dimensionName)));
