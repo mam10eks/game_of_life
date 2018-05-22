@@ -7,7 +7,7 @@
     "test": "elm test",
     "prebuild": "npm test",
     "webp": "webpack --config webpack.config.js",
-    "build": "babel src/js --presets env --out-dir build && browserify build/*.js > build/all.js && find build/*.js -not -name all.js -delete && rm -Rf build/generated",
+    "elm-make": "elm-package install -y && elm-make src/elm/Main.elm --output src/js/generated/elm/main.js",
     "start": "./build_scripts/run_in_docker_container.sh"
   },
   "repository": {

@@ -15,7 +15,7 @@ firstExampleTestSuite =
 
 
 testModel: Model.Model
-testModel = { width = 4, height = 4, livingCells = Set.empty, hoveredCell = ( -1, -1 ), history = [] }
+testModel = { width = 4, height = 4, livingCells = Set.empty, hoveredCell = ( -1, -1 ), history = [], presentationMode = False }
 
 utilityFunctionsSuite : Test.Test
 utilityFunctionsSuite =

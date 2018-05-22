@@ -14,7 +14,7 @@ const EMBED_FONT = [{loader: "url-loader?prefix=font/&limit=5000000"}];
 module.exports = {
 	entry: "./src/js/index.js",
 	output: {
-		path: path.join(__dirname, "build"),
+		path: path.join(__dirname, "dist"),
 		libraryTarget: "var",
 		library: "Application",
 		filename: "all.js"

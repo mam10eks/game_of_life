@@ -1,0 +1,8 @@
+version: '2'
+services:
+    webServer:
+        build:
+            context: .
+            dockerfile: src/build/Dockerfile
+        image: elm-game-of-life:latest
+        ports: ["8080:80"]
