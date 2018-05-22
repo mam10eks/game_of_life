@@ -8,36 +8,33 @@
     "prebuild": "npm test",
     "webp": "webpack --config webpack.config.js",
     "build": "babel src/js --presets env --out-dir build && browserify build/*.js > build/all.js && find build/*.js -not -name all.js -delete && rm -Rf build/generated",
-    "start": "./build_scripts/run_in_docker_container.sh",
-    "br": "browserify-css src/style.css"
+    "start": "./build_scripts/run_in_docker_container.sh"
   },
   "repository": {
     "type": "git",
     "url": "gitlab@gitlab.empty-stack.com:maik/game_of_life.git"
   },
   "author": "Maik Fröbe",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.0",
-    "bootstrap-sass": "^3.3.7",
-    "browserify": "^14.4.0",
-    "css-loader": "^0.28.9",
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "^0.28.11",
     "elm": "^0.18.0",
     "elm-format": "^0.6.1-alpha",
-    "elm-test": "^0.18.9",
-    "file-loader": "^1.1.6",
-    "style-loader": "^0.20.1",
-    "uglifyjs-webpack-plugin": "^1.1.8",
+    "elm-test": "^0.18.12",
+    "file-loader": "^1.1.11",
+    "style-loader": "^0.21.0",
+    "uglifyjs-webpack-plugin": "^1.2.5",
     "uninstall": "0.0.0",
-    "url-loader": "^0.6.2",
+    "url-loader": "^1.0.1",
     "webpack": "^3.10.0"
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
     "bootstrap-slider": "^9.9.0",
-    "intro.js": "^2.8.0-alpha.1",
-    "jquery": "^3.2.1",
-    "js-cookie": "^2.1.4"
+    "intro.js": "^2.9.3",
+    "jquery": "^3.3.1",
+    "js-cookie": "^2.2.0"
   }
 }
