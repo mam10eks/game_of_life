@@ -8,6 +8,7 @@ cp build_scripts/nginx.conf build
 
 DOCKER_FILE="COPY index.html /usr/share/nginx/html/\n"
 DOCKER_FILE="${DOCKER_FILE}COPY assets/beacon.gif /usr/share/nginx/html/\n"
+DOCKER_FILE="${DOCKER_FILE}COPY assets/favicon.png /usr/share/nginx/html/\n"
 DOCKER_FILE="${DOCKER_FILE}COPY all.js /usr/share/nginx/html/\n"
 DOCKER_FILE="${DOCKER_FILE}COPY default.conf /etc/nginx/conf.d/default.conf\n"
 DOCKER_FILE="${DOCKER_FILE}COPY nginx.conf /etc/nginx/nginx.conf\n"
