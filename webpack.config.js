@@ -46,5 +46,7 @@ module.exports = {
 	},
 	plugins: [
 		new UglifyJsPlugin()
-	]
+	],
+	performance: { hints: false },
+	mode: "production"
 }
