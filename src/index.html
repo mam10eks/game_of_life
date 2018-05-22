@@ -59,40 +59,43 @@
 		<div id="contentContainer" style="display: none">
 			<div class="container-fluid text-center" style="background-color: #eee;">
 				<h1>Conway's Game of Life</h1>
-				<div class="row collapse" id="description">
-					<div class="col-sm-7">
-						<div style="background: white; border-radius: 25px; margin: 15px; padding: 15px;">
-							<h2>Backgound</h2>
-							The Game of Life, also known simply as Life,
-							is a cellular automaton devised by the British mathematician John Horton Conway in 1970 [1].
-			
-							You could start using this
-							<p>
-								<a id="tutorial">Tutorial</a>
-							</p>
-
-							Source code and other informations could be found in the 
-							<p>
-								<a data-toggle="modal" data-target="#exampleModalLong">About Section</a>
-							</p>
-						</div>
-					</div>
-					<div class="col-sm-5">
-						<div id="configuration" style="background: white; border-radius: 25px; margin: 15px; padding: 15px;">
-							<h2>Configuration</h2>
-							<br>
-							<div class="row">
-								<div class="col-md-2">Width:</div>
-								<div class="col-md-10">
-									<input id="width" data-slider-id='widthSlider' type="text" data-slider-min="4"
-										data-slider-max="20" data-slider-step="1" data-slider-value="4"/>
-								</div>
+				<div class="collapse" id="description">
+					<div class="row">
+						<div class="col-sm-7">
+							<div style="background: white; border-radius: 25px; margin: 15px; padding: 15px;">
+								<h2>Backgound</h2>
+								The <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Game of Life</a>,
+								also known simply as Life,
+								is a cellular automaton devised by the British mathematician John Horton Conway in 1970.
+				
+								<p>
+								You could start using this <a id="tutorial">Tutorial</a>.
+								There are also some famous patterns <a data-toggle="modal" data-target="#examplePatternsLong">which you should try</a>!
+								</p>
+								
+								<p>
+									Source code and other informations could be found in the
+									<a data-toggle="modal" data-target="#exampleModalLong">About Section</a>.
+								</p>
 							</div>
-							<div class="row">
-								<div class="col-md-2">Height:</div>
-								<div class="col-md-10">
-									<input id="height" data-slider-id='heightSlider' type="text" data-slider-min="4"
-										data-slider-max="20" data-slider-step="1" data-slider-value="4"/>
+						</div>
+						<div class="col-sm-5">
+							<div id="configuration" style="background: white; border-radius: 25px; margin: 15px; padding: 15px;">
+								<h2>Configuration</h2>
+								<br>
+								<div class="row">
+									<div class="col-md-2">Width:</div>
+									<div class="col-md-10">
+										<input id="width" data-slider-id='widthSlider' type="text" data-slider-min="4"
+											data-slider-max="20" data-slider-step="1" data-slider-value="4"/>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-2">Height:</div>
+									<div class="col-md-10">
+										<input id="height" data-slider-id='heightSlider' type="text" data-slider-min="4"
+											data-slider-max="20" data-slider-step="1" data-slider-value="4"/>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -111,15 +114,111 @@
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+							<h3 class="modal-title" id="exampleModalLongTitle" style="display: inline;">About</h3>
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
 						</div>
-						<div class="modal-body">...</div>
+						<div class="modal-body">
+							<ul>
+								<li>This project is my submission for <a href="https://www.it-talents.de/">it-talents</a> code competition <a href="https://www.it-talents.de/foerderung/code-competition/code-competition-05-2018">Game of Life 2018</a></li>
+								<li>Find the source code <a href="https://github.com/mam10eks/game_of_life">on github</a></a></li>
+								<li>See the <a>module documentation</a></li>
+							</ul>
+						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-							<button type="button" class="btn btn-primary">Save changes</button>
+							Version: <a>9b7b8eac68dbace51d1af2bc8229b8d3b6b9a06e</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="modal fade" id="examplePatternsLong" tabindex="-1" role="dialog"
+				aria-labelledby="examplePatternsLongTitle" aria-hidden="true">
+				<div class="modal-dialog" role="document" style="width: 90%;">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h3 class="modal-title" id="examplePatternsLongTitle" style="display: inline;">Try Some Famous Patterns!</h3>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body text-center">
+							<div class="row">
+								<div class="col-sm-3">
+									<div class="card">
+										<img src="beacon.gif" width="100%">
+										<h4><b>Block</b></h4>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="card">
+										<img src="beacon.gif" width="100%">
+										<h4><b>Beehive</b></h4>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="card">
+										<img src="beacon.gif" width="100%">
+										<h4><b>Loaf</b></h4>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="card">
+										<img src="beacon.gif" width="100%">
+										<h4><b>Boat</b></h4>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="card">
+										<img src="beacon.gif" width="100%">
+										<h4><b>Tub</b></h4>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="card">
+										<img src="beacon.gif" width="100%">
+										<h4><b>Blinker</b></h4>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="card">
+										<img src="beacon.gif" width="100%">
+										<h4><b>Toad</b></h4>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="card">
+										<img src="beacon.gif" width="100%">
+										<h4><b>Beacon</b></h4>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="card">
+										<img src="beacon.gif" width="100%">
+										<h4><b>Pulsar</b></h4>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="card">
+										<img src="beacon.gif" width="100%">
+										<h4><b>Pentadecathlon</b></h4>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="card">
+										<img src="beacon.gif" width="100%">
+										<h4><b>Glider</b></h4>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="card">
+										<img src="beacon.gif" width="100%">
+										<h4><b>Spaceship</b></h4>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

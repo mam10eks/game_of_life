@@ -16,6 +16,7 @@ rm -Rf src/js/generated
 ./node_modules/elm/binwrappers/elm-make src/elm/Main.elm --output src/js/generated/elm/main.js
 
 cp src/index.html build/
+cp -r src/assets/ build/
 cp -r src/js/generated build/
 
 npm run-script webp
