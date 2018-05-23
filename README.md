@@ -41,4 +41,37 @@ TBA
 
 I have added some advanced features.
 
-### TBA
+### Tutorial
+
+There exists a 10 step Tutorial which describes the rules of the game and some key features of this application.
+
+![Tutorial](src/assets/readme_images/tutorial.png "Tutorial")
+
+### Time Travel
+
+With navigation buttons (the arrows left and right from the board) you could step through single evolution rounds.
+
+![Time Travel](src/assets/readme_images/time_travel.png "Time Travel")
+
+### A Collection Of Famous Patterns
+
+Do you know some interesting patterns in Conway's game of life?
+No Problem if not, since I have included a list of famous patterns from
+[wikipedia](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life).
+Simply have a look and choose a pattern if you like to try it:
+
+![Famous Patterns](src/assets/readme_images/example_patterns.png "Famous Patterns")
+
+### Overview Of Neighbours
+
+TBA
+
+![Overview Of Neighbours](src/assets/readme_images/highlight_of_neighbours.png "Overview Of Neighbours")
+
+### About Page
+
+TBA
+
+![About Page](src/assets/readme_images/about.png "About Page")
+
+### Configuration
