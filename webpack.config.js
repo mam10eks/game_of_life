@@ -1,5 +1,7 @@
-const path = require('path')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const path = require('path');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const webpack = require('webpack');
+const autoprefixer = require('autoprefixer');
 
 const LOAD_FONT_FROM_CDN = [{
 	loader: "file-loader", 
@@ -10,6 +12,7 @@ const LOAD_FONT_FROM_CDN = [{
 }];
 
 const EMBED_FONT = [{loader: "url-loader?prefix=font/&limit=5000000"}];
+const isProd = process.env.npm_lifecycle_event === 'build';
 
 module.exports = {
 	entry: "./src/js/index.js",
@@ -19,7 +22,12 @@ module.exports = {
 		library: "Application",
 		filename: "all.js"
 	},
+	resolve: {
+		extensions: ['.js', '.elm'],
+		modules: ['node_modules']
+	},
 	module: {
+		noParse: /\.elm$/,
 		rules: [ {
 			test: /\.css$/,
 			use: [ {
@@ -42,11 +50,24 @@ module.exports = {
 		}, {
 			test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
 			use: LOAD_FONT_FROM_CDN
+		}, {
+			test: /\.elm$/,
+			exclude: [/elm-stuff/, /node_modules/],
+			use: 'elm-webpack-loader'
 		}]
 	},
 	plugins: [
-		new UglifyJsPlugin()
+		new UglifyJsPlugin(),
+		new webpack.LoaderOptionsPlugin({ options: { postcss: [autoprefixer()] } })
 	],
 	performance: { hints: false },
 	mode: "production"
+}
+
+if (!isProd) {
+	module.exports.devServer = {
+		historyApiFallback: true,
+		contentBase: './src',
+		hot: true
+	};
 }

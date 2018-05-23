@@ -6,17 +6,15 @@ COPY webpack.config.js package.json package-lock.json elm-package.json /game_of_
 COPY src /game_of_life/src/
 COPY tests /game_of_life/tests/
 
-RUN echo "npm install" && npm install \
-	&& echo "npm test" && npm test \
-	&& echo "npm run-script elm-make" && npm run-script elm-make \
-	&& npm run-script webp
+RUN npm install && npm run build
 
 FROM nginx:1.14-alpine
 
 COPY --from=buildImage /game_of_life/dist/all.js /usr/share/nginx/html/
 COPY src/assets/favicon.png src/assets/beacon.gif src/assets/beehive.png \
 	src/assets/blinker_pattern.gif src/assets/block.png src/assets/boat.png \
-	src/assets/loaf.png src/assets/toad_pattern.gif src/assets/tub.png src/index.html \
-	/usr/share/nginx/html/
+	src/assets/loaf.png src/assets/toad_pattern.gif src/assets/tub.png \
+	/usr/share/nginx/html/assets/
+COPY src/index.html /usr/share/nginx/html/
 COPY src/build/nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY src/build/nginx/nginx.conf /etc/nginx/nginx.conf

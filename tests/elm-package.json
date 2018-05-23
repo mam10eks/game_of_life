@@ -1,8 +1,8 @@
 {
     "version": "1.0.0",
-    "summary": "Test Suites",
-    "repository": "https://github.com/user/project.git",
-    "license": "BSD3",
+    "summary": "Test Suites for the implementation of Conway's Game of Life",
+    "repository": "https://github.com/mam10eks/game-of-life.git",
+    "license": "Apache-2.0",
     "source-directories": [
         "../src/elm",
         "."

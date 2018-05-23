@@ -1,4 +1,4 @@
-import Elm from './generated/elm/main.js'
+import Elm from '../elm/Main'
 import {ConfigurationView, CONFIG_WIDTH_DIMENSION_NAME, CONFIG_HEIGHT_DIMENSION_NAME} from './configuration-view.js'
 import {CookieStorage} from './cookie-storage.js'
 import DetailsView from './details-view.js'
