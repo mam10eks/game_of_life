@@ -48,3 +48,12 @@ if(cookieStorage.userShouldStartTutorial()) {
 		new Introduction(detailsView, configurationView, elmMainModule).showTutorial();
 	}, 1);
 }
+
+function loadPattern(examplePattern) {
+	configurationView.setWidth(examplePattern.width);
+	configurationView.setHeight(examplePattern.height);
+	elmMainModule.ports.loadPattern.send(examplePattern.pattern);
+	$('#examplePatternsLong').modal('hide');
+}
+
+export { loadPattern }

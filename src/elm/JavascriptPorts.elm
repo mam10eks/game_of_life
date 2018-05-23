@@ -12,6 +12,12 @@ port changeHeight : (Int -> msg) -> Sub msg
 port enablePresentationMode : (Bool -> msg) -> Sub msg
 
 
+port loadPattern : ((List (Int, Int)) -> msg) -> Sub msg
+
+
 subscriptions : Model -> Sub Msg
 subscriptions model =
-    Sub.batch [ changeWidth ChangeWidth, changeHeight ChangeHeight, enablePresentationMode EnablePresentationMode ]
+    Sub.batch [ changeWidth ChangeWidth
+    , changeHeight ChangeHeight
+    , enablePresentationMode EnablePresentationMode
+    , loadPattern LoadPattern ]

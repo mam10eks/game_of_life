@@ -79,3 +79,6 @@ update msg model =
 
         EnablePresentationMode enablePresentationMode ->
             ( { model | livingCells = Set.empty, history = [], presentationMode = enablePresentationMode }, Cmd.none )
+
+        LoadPattern livingCells ->
+            ( {model | livingCells = (Set.fromList livingCells), history = []}, Cmd.none )

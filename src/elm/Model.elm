@@ -23,3 +23,4 @@ type Msg
     | GoToLastState
     | Clear
     | EnablePresentationMode Bool
+    | LoadPattern (List (Int, Int))
