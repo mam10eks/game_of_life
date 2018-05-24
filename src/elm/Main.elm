@@ -1,4 +1,14 @@
-module Main exposing (..)
+module Main exposing (main, update)
+
+{-| The main module for the game of life application.
+The documentation of the components is roughly ordered by importance.
+
+# The Update Method
+@docs update
+
+# The Main Method
+@docs main
+-}
 
 import Model exposing (..)
 import JavascriptPorts as JavascriptPorts
@@ -8,7 +18,9 @@ import GameOfLife as GameOfLife
 import Set as Set
 import Result as Result
 
-
+{-| Weave everything together to a program with flags.
+-}
+main : Program Flags Model Msg
 main =
     Html.programWithFlags { init = init, view = View.view, update = update, subscriptions = JavascriptPorts.subscriptions }
 
@@ -48,6 +60,8 @@ removeCellsOutsideOfGrid model set =
     Set.filter (\( a, b ) -> a < model.height && b < model.width) set
 
 
+{-| Calculate the next model based on a current model and a message.
+-}
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of

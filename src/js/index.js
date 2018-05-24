@@ -56,4 +56,9 @@ function loadPattern(examplePattern) {
 	$('#examplePatternsLong').modal('hide');
 }
 
+document.querySelector('#about-footer').innerHTML = `Version: ${VERSION}<br>Commit: <a href="${LINK_TO_COMMIT}">${COMMIT ? COMMIT : 'Unknown'}</a>`;
+
+document.querySelector('#about-ul').innerHTML += `<li>Build Timestamp: ${BUILD_TIMESTAMP}</li>
+<li>Production: ${PRODUCTION}</li>`
+
 export { loadPattern }

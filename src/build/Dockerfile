@@ -5,6 +5,7 @@ WORKDIR /game_of_life
 COPY webpack.config.js package.json package-lock.json elm-package.json /game_of_life/
 COPY src /game_of_life/src/
 COPY tests /game_of_life/tests/
+COPY .git /game_of_life/.git/
 
 RUN npm install && npm run build
 

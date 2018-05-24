@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "gitlab@gitlab.empty-stack.com:maik/game_of_life.git"
+    "url": "https://github.com/mam10eks/game_of_life/"
   },
   "author": "Maik Fröbe",
   "license": "Apache-2.0",
@@ -20,11 +20,13 @@
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "css-loader": "^0.28.11",
+    "dateformat": "^3.0.3",
     "elm": "^0.18.0",
     "elm-format": "^0.6.1-alpha",
     "elm-test": "^0.18.12",
     "elm-webpack-loader": "^4.5.0",
     "file-loader": "^1.1.11",
+    "git-revision-webpack-plugin": "^3.0.3",
     "rimraf": "^2.6.2",
     "style-loader": "^0.21.0",
     "uglifyjs-webpack-plugin": "^1.2.5",
