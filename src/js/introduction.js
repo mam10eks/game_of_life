@@ -108,8 +108,8 @@ export default class Introduction {
 
     onExitTutorial() {
         this.clearGameFieldForTutorial();
-        this.configurationView.setWidth(20);
-        this.configurationView.setHeight(20);
+        this.configurationView.setWidth(this.initialBoardWidth);
+        this.configurationView.setHeight(this.initialBoardHeight);
         this.elmMainModule.ports.enablePresentationMode.send(false);
     }
 
@@ -121,6 +121,8 @@ export default class Introduction {
 
     showTutorial() {
         this.elmMainModule.ports.enablePresentationMode.send(true);
+        this.initialBoardWidth = this.configurationView.getWidth();
+        this.initialBoardHeight = this.configurationView.getHeight();
         this.clearGameFieldForTutorial();
 
         this.intro = introJs();
