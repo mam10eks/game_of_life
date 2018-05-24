@@ -36,7 +36,8 @@ init flags =
       , livingCells = Set.empty
       , hoveredCell = ( -1, -1 )
       , history = []
-      , presentationMode = False
+      , presentationMode = False,
+      pausedBoardState = { width = 0, height = 0, livingCells = Set.empty, history = []}
       }
     , Cmd.none
     )
@@ -92,7 +93,21 @@ update msg model =
             ( { model | livingCells = Set.empty, history = [] }, Cmd.none )
 
         EnablePresentationMode enablePresentationMode ->
-            ( { model | livingCells = Set.empty, history = [], presentationMode = enablePresentationMode }, Cmd.none )
+            let
+                pausedBoardState = 
+                    if enablePresentationMode then
+                        { width = model.width, height = model.height, livingCells = model.livingCells, history = model.history}
+                    else
+                        { width = 0, height = 0, livingCells = Set.empty, history = []}
+            in
+                ( { model |
+                    width = if enablePresentationMode then 5 else model.pausedBoardState.width
+                    , height = if enablePresentationMode then 5 else model.pausedBoardState.height
+                    , livingCells = if enablePresentationMode then Set.empty else model.pausedBoardState.livingCells
+                    , history = if enablePresentationMode then [] else model.pausedBoardState.history
+                    , presentationMode = enablePresentationMode
+                    , pausedBoardState = pausedBoardState
+                  }, Cmd.none )
 
         LoadPattern livingCells ->
             ( {model | livingCells = (Set.fromList livingCells), history = []}, Cmd.none )

@@ -61,7 +61,7 @@ export default class Introduction {
         }
         
         if(3 === this.intro._currentStep) {
-            this.clearGameFieldForTutorial();
+            this.initialTutorialBoard();
         }
         else if([4, 6].includes(this.intro._currentStep)) {
             this.firstTutorialBoardExample();
@@ -107,23 +107,13 @@ export default class Introduction {
     }
 
     onExitTutorial() {
-        this.clearGameFieldForTutorial();
-        this.configurationView.setWidth(this.initialBoardWidth);
-        this.configurationView.setHeight(this.initialBoardHeight);
-        this.elmMainModule.ports.enablePresentationMode.send(false);
-    }
-
-    clearGameFieldForTutorial() {
-        this.configurationView.setWidth(5);
-        this.configurationView.setHeight(5);
         this.initialTutorialBoard();
+        this.elmMainModule.ports.enablePresentationMode.send(false);
     }
 
     showTutorial() {
         this.elmMainModule.ports.enablePresentationMode.send(true);
-        this.initialBoardWidth = this.configurationView.getWidth();
-        this.initialBoardHeight = this.configurationView.getHeight();
-        this.clearGameFieldForTutorial();
+        this.initialTutorialBoard();
 
         this.intro = introJs();
         this.intro.setOptions(INTRO_OPTIONS);

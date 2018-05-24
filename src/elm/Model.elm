@@ -11,6 +11,13 @@ type alias Model =
     , hoveredCell : ( Int, Int )
     , history : List (Set.Set ( Int, Int ))
     , presentationMode : Bool
+    , pausedBoardState :
+        {
+            width : Int
+            , height : Int
+            , livingCells: Set.Set ( Int, Int )
+            ,history : List (Set.Set ( Int, Int ))
+        }
     }
 
 
