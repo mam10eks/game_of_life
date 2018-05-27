@@ -1,7 +1,7 @@
 module ViewTests exposing (..)
 
 import Model exposing (..)
-import View exposing (isRunButtonClickable, isCleanButtonClickable)
+import Util exposing (isRunButtonClickable, isCleanButtonClickable)
 import GameOfLifeTests exposing (testModel)
 import Expect as Expect
 import Test as Test

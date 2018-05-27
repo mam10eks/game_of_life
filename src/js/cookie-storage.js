@@ -1,10 +1,14 @@
 import Cookie from 'js-cookie'
 
-import {CONFIG_WIDTH_DIMENSION_NAME, CONFIG_HEIGHT_DIMENSION_NAME} from './configuration-view.js'
+import {CONFIG_WIDTH_DIMENSION_NAME, CONFIG_HEIGHT_DIMENSION_NAME, CONFIG_SPEED_NAME} from './configuration-view.js'
 
 const MINIMUM_DIMENSION = 4;
 
 const MAXIMUM_DIMENSION = 20;
+
+const MINIMUM_SPEED = 50;
+
+const MAXIMUM_SPEED = 2000;
 
 const HIDE_DESCRIPTION_COOKIE_NAME = 'hideDescription';
 
@@ -17,6 +21,11 @@ function getDimensionValueFromCookie(dimensionName) {
 function clipDimensionSize(dimensionSize) {
     dimensionSize = Number.isInteger(dimensionSize) ? dimensionSize : MINIMUM_DIMENSION;
     return Math.max(Math.min(MAXIMUM_DIMENSION, dimensionSize), MINIMUM_DIMENSION);
+}
+
+function clipSpeed(speed) {
+    speed = Number.isInteger(speed) ? speed : MINIMUM_SPEED;
+    return Math.max(Math.min(MAXIMUM_SPEED, speed), MINIMUM_SPEED);
 }
 
 class CookieStorage {
@@ -34,6 +43,14 @@ class CookieStorage {
 
     setHeight(height) {
 	    Cookie.set(CONFIG_HEIGHT_DIMENSION_NAME, height);
+    }
+
+    getSpeed() {
+        return clipSpeed(parseInt(Cookie.get(CONFIG_SPEED_NAME)));
+    }
+
+    setSpeed(speed) {
+        Cookie.set(CONFIG_SPEED_NAME, speed);
     }
 
     hideDetails() {
@@ -57,4 +74,4 @@ class CookieStorage {
     }
 }
 
-export { CookieStorage, clipDimensionSize }
+export { CookieStorage, clipDimensionSize, clipSpeed }

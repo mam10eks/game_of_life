@@ -14,20 +14,26 @@ let detailsView = new DetailsView(
 	() => cookieStorage.showDetails()
 );
 
-let configurationView = new ConfigurationView(onChangeDimension, {
+let configurationView = new ConfigurationView(onChangeDimension, onChangeSpeed, {
 	width: cookieStorage.getWidth(),
-	height: cookieStorage.getHeight()
+	height: cookieStorage.getHeight(),
+	speed: cookieStorage.getSpeed()
 });
 
 let elmMainModule = Elm.Main.embed(document.getElementById("main"),
-	{width: configurationView.getWidth(), height: configurationView.getHeight()});
+	{width: configurationView.getWidth(), height: configurationView.getHeight(), runSpeedInMs: configurationView.getSpeed()});
 
-function onChangeDimension () {
+function onChangeDimension() {
 	elmMainModule.ports.changeWidth.send(configurationView.getWidth());
 	elmMainModule.ports.changeHeight.send(configurationView.getHeight());
 
 	cookieStorage.setWidth(configurationView.getWidth());
 	cookieStorage.setHeight(configurationView.getHeight());
+}
+
+function onChangeSpeed() {
+	elmMainModule.ports.changeSpeed.send(configurationView.getSpeed());
+	cookieStorage.setSpeed(configurationView.getSpeed());
 }
 
 if(cookieStorage.areDetailsHidden()) {

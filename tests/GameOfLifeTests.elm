@@ -15,7 +15,7 @@ firstExampleTestSuite =
 
 
 testModel: Model.Model
-testModel = { width = 4, height = 4, livingCells = Set.empty, hoveredCell = ( -1, -1 ), history = [], presentationMode = False, pausedBoardState = { width = 0, height = 0, livingCells = Set.empty, history = []} }
+testModel = { width = 4, height = 4, runSpeedInMs = 250, autoRunEnabled = False, livingCells = Set.empty, hoveredCell = ( -1, -1 ), history = [], presentationMode = False, pausedBoardState = { width = 0, height = 0, livingCells = Set.empty, history = []} }
 
 utilityFunctionsSuite : Test.Test
 utilityFunctionsSuite =
