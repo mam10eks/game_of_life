@@ -1,4 +1,4 @@
-module View exposing (view)
+module View exposing (view, isRunButtonClickable, isCleanButtonClickable)
 
 import Model exposing (..)
 import GameOfLife as GameOfLife
@@ -6,6 +6,14 @@ import Html as Html
 import Html.Attributes as Attributes
 import Html.Events as Events
 import Set as Set
+
+
+isRunButtonClickable : Model -> Bool
+isRunButtonClickable model = not (Set.isEmpty model.livingCells)
+
+
+isCleanButtonClickable : Model -> Bool
+isCleanButtonClickable model = isRunButtonClickable model || not (List.isEmpty model.history)
 
 
 square : ( Int, Int ) -> Model -> Html.Html Msg
@@ -75,12 +83,12 @@ historyNavigationButton active direction msg =
             ]
 
 
-buttonBar : Bool -> Html.Html Msg
-buttonBar canRun =
+buttonBar : Model -> Html.Html Msg
+buttonBar model =
     Html.div [ Attributes.class "container-fluid", Attributes.style [ ( "background-color", "#eee" ), ( "padding", "10px 50px" ) ] ]
         [ Html.div [ Attributes.class "row" ]
-            (buttonBarButton ( "trash", "Clear" ) canRun Clear
-                ++ buttonBarButton ( "play", "Run it" ) canRun Clear
+            (buttonBarButton ( "trash", "Clear" ) (isCleanButtonClickable model) Clear
+                ++ buttonBarButton ( "play", "Run it" ) (isRunButtonClickable model) Clear
             )
         ]
 
@@ -121,7 +129,7 @@ view model =
         [ Html.div [ Attributes.class "mainRow" ]
             [ historyNavigationButton (not (List.isEmpty model.history)) "left" GoToLastState
             , Html.div [ Events.onMouseLeave (HoverCell ( -1, -1 )) ] (List.map (inputRow model) (List.range 0 (model.height - 1)))
-            , historyNavigationButton (not (Set.isEmpty model.livingCells)) "right" CalculateNextGeneration
+            , historyNavigationButton (isRunButtonClickable model) "right" CalculateNextGeneration
             ]
-        , buttonBar (not (Set.isEmpty model.livingCells))
+        , buttonBar model
         ]
