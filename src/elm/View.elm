@@ -78,16 +78,20 @@ historyNavigationButton active direction msg =
 
 buttonBar : Model -> Html.Html Msg
 buttonBar model =
-    Html.div [ Attributes.class "container-fluid", Attributes.style [ ( "background-color", "#eee" ), ( "padding", "10px 50px" ) ] ]
-        [ Html.div [ Attributes.class "row" ]
-            (buttonBarButton ( "trash", "Clear" ) (isCleanButtonClickable model) Clear
-                ++ buttonBarButton ( "play", "Run it" ) (isRunButtonClickable model) (EnableAutoRun True)
-            )
-        ]
+    let
+        runButtonIcon = if model.autoRunEnabled then "pause" else "play"
+        runButtonText = if model.autoRunEnabled then "Pause" else "Run it"
+    in
+        Html.div [ Attributes.class "container-fluid", Attributes.style [ ( "background-color", "#eee" ), ( "padding", "10px 50px" ) ] ]
+            [ Html.div [ Attributes.class "row" ]
+                (buttonBarButton ( "trash", "Clear" ) (isCleanButtonClickable model) Clear
+                    ++ buttonBarButton ( runButtonIcon , runButtonText ) (isRunButtonClickable model) (EnableAutoRun (not model.autoRunEnabled))
+                )
+            ]
 
 
 buttonBarId iconName =
-    if "play" == iconName then
+    if "play" == iconName || "pause" == iconName then
         "runButton"
     else
         "cleanButton"
