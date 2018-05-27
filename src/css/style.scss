@@ -5,7 +5,6 @@ html, head, body
 	font-size: 1em;
 }
 
-
 .introjs-tooltip
 {
 	min-width: 300px;
@@ -13,12 +12,16 @@ html, head, body
 	font-size: 1.6em;
 }
 
-
 .introjs-button
 {
-	font-size: 1.5em;
+	font-size: 1.1em;
 }
 
+.introjs-tooltipbuttons a:hover, a:focus, a:active
+{
+	color: black !important;
+	outline: 0;
+}
 
 .cell
 {

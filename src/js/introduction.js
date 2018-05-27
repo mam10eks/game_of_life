@@ -39,10 +39,10 @@ const INTRO_OPTIONS = {
     steps: steps,
     showProgress: true,
     showBullets: false,
-    skipLabel: "X",
-    doneLabel: "X",
-    prevLabel: "<-",
-    nextLabel: "->"
+    skipLabel: "<span class=\"glyphicon glyphicon-remove\"></span>",
+    doneLabel: "<span class=\"glyphicon glyphicon-ok\"></span>",
+    prevLabel: "<span class=\"glyphicon glyphicon-arrow-left\"></span>",
+    nextLabel: "<span class=\"glyphicon glyphicon-arrow-right\"></span>"
 };
 
 export default class Introduction {
@@ -118,8 +118,7 @@ export default class Introduction {
         this.intro = introJs();
         this.intro.setOptions(INTRO_OPTIONS);
         this.intro.onbeforechange(()=> this.onBeforeIntroductionChage.call(this));
-        this.intro.onexit(() => this.onExitTutorial.call(this));
-        this.intro.oncomplete(() => this.onExitTutorial.call(this));
+        this.intro.onbeforeexit(() => this.onExitTutorial.call(this));
         this.intro.start();
     }
 }

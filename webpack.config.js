@@ -49,11 +49,10 @@ module.exports = {
 		noParse: /\.elm$/,
 		rules: [ {
 			test: /\.css$/,
-			use: [ {
-					loader: "style-loader"
-				}, {
-					loader: "css-loader"
-				}]
+			use: ['style-loader', 'css-loader']
+		}, {
+			test: /\.scss$/,
+			use: [ 'style-loader', 'css-loader', 'sass-loader' ]
 		}, {
 			test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
 			use: LOAD_FONT_FROM_CDN
