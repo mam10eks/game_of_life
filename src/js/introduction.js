@@ -23,7 +23,7 @@ const steps = [ {
     }, {
         element: "#history_right",
         position: "left",
-        intro: "Alright!<br><br><div style='font-size: 0.8em;'>Lets investigate the next <b>round</b> of <b>evolution</b>.</div>"
+        intro: "Alright!<br><br><div style='font-size: 0.8em;'>Lets investigate the next <b>generation</b> in the <b>evolution</b>.</div>"
     }, {
         element: "#cell_2_2",
         intro: "This cell was just born.<br><br><div style='font-size: 0.8em;'>But... all other cells...</div><b>died</b>??"
