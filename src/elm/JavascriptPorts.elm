@@ -1,5 +1,8 @@
 port module JavascriptPorts exposing (subscriptions, nextAutoRunStep)
 
+{-| All communication ports between JavaScript and Elm.
+-}
+
 import Model exposing (..)
 import Util exposing (..)
 import Time

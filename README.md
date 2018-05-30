@@ -69,6 +69,7 @@ Since this is completely determined by the neighbourhood of a cell,
 you could investigate the restrained marking of those:
 
 ![Overview Of Neighbours](src/assets/readme_images/highlight_of_neighbours.png "Overview Of Neighbours")
+
 This feature comes in handy together with [time travel](#time-travel).
 
 ### About Page

@@ -1,5 +1,23 @@
 module Main exposing (..)
 
+{-| Game of life 
+
+The following points are particularly important:
+
+# Model and messages
+
+[Model.elm](Model.elm) gives an overview about the complete model (i.e. state)
+of the application and all messages that could change those state.
+
+# The update method
+
+Determines how the application state (model) will change for a particular message,
+
+# The game of life logic
+
+Is completely implemented within [GameOfLife.elm](GameOfLife.elm).
+
+-}
 
 import Model exposing (..)
 import JavascriptPorts as JavascriptPorts
@@ -36,6 +54,9 @@ init flags =
     )
 
 
+{-|Apply a message to the current state of the application in order to determine 
+the next application state.
+-}
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     ( determineModelForNextRound msg model, Cmd.none )

@@ -1,9 +1,21 @@
 module Model exposing (..)
 
+{-| Model and all possible messages
+
+# Model (i.e. State)
+@docs Model
+
+# Msg (i.e. triggers of state changes)
+@docs Msg
+
+-}
+
 import Set as Set
 import List
 
 
+{-| The complete state of the application: aka Model ;)
+-}
 type alias Model =
     { width : Int
     , height : Int
@@ -23,6 +35,8 @@ type alias Model =
     }
 
 
+{-| All changes within the state (Model) are triggered by Messages.
+-}
 type Msg
     = ChangeWidth Int
     | ChangeHeight Int
