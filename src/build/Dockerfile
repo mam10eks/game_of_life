@@ -16,7 +16,7 @@ COPY src/assets/favicon.png src/assets/beacon.gif src/assets/beehive.png \
 	src/assets/blinker_pattern.gif src/assets/block.png src/assets/boat.png \
 	src/assets/loaf.png src/assets/toad_pattern.gif src/assets/tub.png \
 	src/assets/pulsar_pattern.gif src/assets/glider_pattern.gif src/assets/pentadecathlon.gif \
-	src/assets/spaceship.gif /usr/share/nginx/html/assets/
+	src/assets/spaceship.gif src/assets/introduction_evolution.png /usr/share/nginx/html/assets/
 COPY src/index.html /usr/share/nginx/html/
 COPY src/build/nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY src/build/nginx/nginx.conf /etc/nginx/nginx.conf

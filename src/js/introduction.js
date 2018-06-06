@@ -2,7 +2,7 @@ import introJs from 'intro.js'
 import 'intro.js/introjs.css'
 
 const steps = [ {
-        intro: "Welcome&nbsp;to&nbsp;<b>Conway's&nbsp;Game&nbsp;of&nbsp;Life</b>.<br><br><div style='font-size: 0.8em;'>Where&nbsp;<b>evolution</b>&nbsp;becomes&nbsp;a&nbsp;<b>turn&#8209;based</b>&nbsp;game&nbsp;:)<img src='https://i.ytimg.com/vi/d2AgV_6HkDI/maxresdefault.jpg' width='100%'></div>"
+        intro: "Welcome&nbsp;to&nbsp;<b>Conway's&nbsp;Game&nbsp;of&nbsp;Life</b>.<br><br><div style='font-size: 0.8em;'>Where&nbsp;<b>evolution</b>&nbsp;becomes&nbsp;a&nbsp;<b>turn&#8209;based</b>&nbsp;game&nbsp;:)<img src='assets/introduction_evolution.png' width='100%'></div>"
     }, {
         element: "#tutorial",
         position: "right",
